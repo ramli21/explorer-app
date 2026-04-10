@@ -36,12 +36,12 @@ export const useExplorerStore = defineStore('explorer', {
     async search(query: string) {
       this.loading = true;
       this.isSearching = true;
-      this.selectedFolderId = null;
+      this.selectedFolderId = 'dd';
       try {
         const res = await axios.get(
           `http://localhost:3000/api/search?q=${encodeURIComponent(query)}`,
         );
-        this.currentContent = res.data;
+        this.searchResults = res.data;
       } finally {
         this.loading = false;
       }
